@@ -1,3 +1,37 @@
 @import "tailwindcss";
 
+@theme {
+  /* Tus colores personalizados como clases de Tailwind */
+  --color-primary: #ffae00;          
+  --color-secondary: #b83dba;        
+  
+  /* Tonos base para la estructura industrial */
+  --color-cyber-black: #020202;     
+  --color-cyber-navbar: #050505;     
+  --color-cyber-grid: #141414;       
+  --color-cyber-grid-light: #e5e7eb;
+}
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra vertical */
+  height: 10px; /* Alto de la barra horizontal si la hay */
+}
+
+/* El "riel" o fondo de la barra */
+::-webkit-scrollbar-track {
+  background: var(--color-cyber-grid);
+  border-left: 1px solid var(--color-cyber-grid-light);
+}
+
+/* El "pulgar" o la barra que se mueve */
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary); /* Tu amarillo */
+}
+
+/* Efecto hover al pasar el cursor sobre la barra */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary); /* Cambia al violeta/rosado */
+}
+
 @variant dark (&:is(.dark *));
