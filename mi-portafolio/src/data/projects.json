@@ -1,0 +1,66 @@
+[
+  {
+    "id": "cursos-fcfm",
+    "title": "CursosFCFM",
+    "category": "Web Development",
+    "featured": true,
+    "description": {
+      "es": "Plataforma web para cursos institucionales con paneles administrativos y catálogo de estudiantes, desplegada en producción.",
+      "en": "Web platform for institutional courses featuring administrative panels and student catalogs, deployed in production."
+    },
+    "techStack": ["React", "TypeScript", "TailwindCSS", "Laravel"],
+    "links": {
+      "live": "https://eventosfcfm.com.mx",
+      "github": ""
+    },
+    "image": "/images/projects/cursos-fcfm.jpg"
+  },
+  {
+    "id": "beast-brawl",
+    "title": "BeastBrawl",
+    "category": "Game Development",
+    "featured": true,
+    "description": {
+      "es": "Proyecto principal de desarrollo de videojuegos. Una experiencia con un fuerte enfoque artístico y visión de entretenimiento.",
+      "en": "Flagship game development project. An experience with a strong artistic focus and entertainment vision."
+    },
+    "techStack": ["Godot", "C#", "Blender", "ZBrush", "Rive"],
+    "links": {
+      "live": "",
+      "github": ""
+    },
+    "image": "/images/projects/beast-brawl.jpg"
+  },
+  {
+    "id": "detective-algebraico",
+    "title": "Detective Algebraico & MathGuess",
+    "category": "Educational Games",
+    "featured": false,
+    "description": {
+      "es": "Colección de juegos interactivos desarrollados para promover el aprendizaje de las matemáticas de forma dinámica.",
+      "en": "Collection of interactive games developed to promote mathematics learning in a dynamic way."
+    },
+    "techStack": ["Phaser.js", "JavaScript", "HTML5"],
+    "links": {
+      "live": "",
+      "github": ""
+    },
+    "image": "/images/projects/math-games.jpg"
+  },
+  {
+    "id": "astronomy-visualizer",
+    "title": "Explorador del Universo",
+    "category": "Multimedia & 3D",
+    "featured": false,
+    "description": {
+      "es": "Producción audiovisual y 3D para visualizar las escalas del universo, combinando elementos 2D y modelos tridimensionales.",
+      "en": "Audiovisual and 3D production to visualize the scales of the universe, combining 2D elements and 3D models."
+    },
+    "techStack": ["Maya", "React Three Fiber", "DragonBones"],
+    "links": {
+      "live": "",
+      "github": ""
+    },
+    "image": "/images/projects/astronomy.jpg"
+  }
+]
