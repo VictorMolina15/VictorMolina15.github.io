@@ -9,7 +9,7 @@ import projectsData from '../data/projects.json';
 <Layout title="Victor Molina | Portfolio">
 	<Navbar client:load />
 
-    <HeroMask client:load />
+    <HeroMask client:only="react" />
 
 	<main class="w-full max-w-[1600px] mx-auto border-x border-cyber-grid-light dark:border-cyber-grid bg-white dark:bg-cyber-black transition-colors duration-300">
 		{projectsData.map((project, index) => (
