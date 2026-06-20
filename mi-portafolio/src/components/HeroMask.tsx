@@ -19,31 +19,35 @@ export default function HeroMask() {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // 1. Activar las transiciones inmediatamente tras montarse el componente
-    setIsMounted(true);
+  // 1. Activar las transiciones del Hero
+  setIsMounted(true);
 
-    // 2. Sincronizar estado inicial del tema
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    };
+  // 2. Sincronizar la aparición del contenedor de proyectos externo
+  const timelineContainer = document.getElementById('projects-timeline');
+  if (timelineContainer) {
+    timelineContainer.classList.remove('opacity-0', 'pointer-events-none');
+  }
+
+  // 3. Sincronizar estado inicial del tema
+  const checkTheme = () => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  };
+  checkTheme();
+
+  // 4. MutationObserver para detectar el cambio de modo claro/oscuro
+  const observer = new MutationObserver(() => {
     checkTheme();
+  });
 
-    // 3. MutationObserver para detectar el cambio de modo claro/oscuro entre islas de React
-    const observer = new MutationObserver(() => {
-      checkTheme();
-    });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
 
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  return () => observer.disconnect();
+}, []);
 
   // Definición de colores para pasárselos al Canvas [R, G, B] mapeados de 0 a 1
-  // Modo Oscuro: Olas rojo oscuro sobre fondo negro absoluto
-  // Modo Claro: Olas rojo intenso sobre fondo blanco puro al estilo cómic/manga
   const waveColor: [number, number, number] = isDark ? [0.44, 0.08, 0.08] : [.8, .8, .8];
   const bgColor: [number, number, number] = isDark ? [0.0, 0.0, 0.0] : [0, 0, 0];
 
@@ -83,20 +87,20 @@ export default function HeroMask() {
       <div className="absolute inset-0 pointer-events-none z-40 opacity-[0.04] dark:opacity-15 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
 
       {/* Marco Izquierdo */}
-      <div className="absolute left-0 top-32 bottom-20 w-16 border-r border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
-        <div className="absolute top-0 left-8 md:left-16 flex flex-col">
-          <span className="text-primary font-mono text-xs tracking-[0.3em] uppercase font-bold animate-pulse">// SSS.INIT</span>
-          <span className="text-gray-400 dark:text-neutral-500 font-mono text-xs tracking-widest mt-2">DANTE_PROTOCOL</span>
+      <div className="absolute left-0 top-20 bottom-0 w-16 border-r border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
+        <div className="absolute pl-5 md:left-16 flex flex-col">
+          <span className="text-primary font-mono text-xs tracking-[0.3em] uppercase font-bold animate-pulse">// SYS.INIT</span>
+          <span className="text-secondary dark:text-neutral-500 font-mono text-xs tracking-widest mt-2">DEV_PROTOCOL</span>
         </div>
-        <div className="w-4 h-40 mt-4"><DiagonalLoader /></div>
+        <div className="w-4 h-40 mt-20"><DiagonalLoader /></div>
         <div className="w-4 h-24 opacity-50"><DiagonalLoader reverse /></div>
       </div>
 
       {/* Marco Derecho */}
-      <div className="absolute right-0 top-32 bottom-20 w-16 border-l border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
-        <div className="w-4 h-24 mt-8 opacity-50"><DiagonalLoader /></div>
+      <div className="absolute right-0 top-20 bottom-0 w-16 border-l border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
+        <div className="w-4 h-24 mt-20 opacity-50"><DiagonalLoader /></div>
         <div className="w-4 h-48"><DiagonalLoader reverse /></div>
-        <div className="absolute bottom-0 right-8 text-primary/70 dark:text-secondary/70 font-mono text-xs tracking-wider">[REWORK-TEST]</div>
+        <div className="absolute bottom-5 right-18 w-25 text-secondary/70 dark:text-gray-300/70 font-bold text-xs tracking-wider">[REWORK-TEST]</div>
       </div>
 
       {/* =========================================================================

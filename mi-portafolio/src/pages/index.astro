@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar.tsx';
 import ProjectCard from '../components/ProjectCard.tsx';
 import HeroMask from '../components/HeroMask.tsx';
 import projectsData from '../data/projects.json';
+import About from '../components/About';
 ---
 
 <Layout title="Victor Molina | Portfolio">
@@ -11,9 +12,14 @@ import projectsData from '../data/projects.json';
 
     <HeroMask client:only="react" />
 
-	<main class="w-full max-w-[1600px] mx-auto border-x border-cyber-grid-light dark:border-cyber-grid bg-white dark:bg-cyber-black transition-colors duration-300">
+	<main 
+		id="projects-timeline" 
+		class="w-full max-w-[1600px] mx-auto border-x border-cyber-grid-light 
+		dark:border-cyber-grid bg-white dark:bg-cyber-black transition-all duration-1000 opacity-0 pointer-events-none"
+	>
 		{projectsData.map((project, index) => (
 			<ProjectCard project={project} index={index} client:visible />
 		))}
+		<About client:visible />
 	</main>
 </Layout>

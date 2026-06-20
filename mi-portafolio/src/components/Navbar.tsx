@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [mounted, setMounted] = useState(false);
 
-  // Al cargar el componente, sincronizar con el tema actual
+  // Sincronizar con el tema del sistema al montar el componente
   useEffect(() => {
     const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     setTheme(currentTheme);
@@ -15,43 +15,50 @@ export default function Navbar() {
   const handleToggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-
+    
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-
+    
     localStorage.setItem('theme', newTheme);
   };
 
-  // Renderizar un botón placeholder mientras se monta
+  // Centralizamos las clases para garantizar consistencia absoluta entre estados
+  const navStyles = "fixed w-full top-0 z-50 flex justify-between items-center px-8 py-6 bg-cyber-navbar/90 backdrop-blur-md border-b border-cyber-grid transition-colors duration-300";
+  const titleStyles = "text-xl font-black uppercase tracking-tighter text-white";
+  const buttonStyles = "border border-cyber-grid-light hover:border-gray-300 px-6 py-2 text-xs font-mono text-gray-300 hover:text-gray-300 uppercase tracking-widest transition-colors flex items-center gap-2 bg-transparent cursor-pointer";
+
+  // Estado del servidor (Pre-hidratación): Misma estructura y estilos visuales
   if (!mounted) {
     return (
-      <nav className="fixed w-full top-0 z-50 flex justify-between items-center px-8 py-4 bg-white/50 dark:bg-gray-900/50 backdrop-blur-md transition-colors duration-300 shadow-sm dark:shadow-gray-800">
-        <div className="text-2xl font-bold font-mono tracking-tighter text-gray-900 dark:text-white">
-          Victor Molina
+      <nav className={navStyles}>
+        <div className={titleStyles}>
+          Victor_Molina<span className="text-primary">.</span>Dev
         </div>
-        <button className="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all font-medium">
-          Mode
-        </button>
+        <div className={buttonStyles}>
+          <span>Mode</span>
+          {/* El indicador se adapta automáticamente usando las clases de Tailwind dark: */}
+          <div className="w-2 h-2 bg-gray-300 dark:bg-primary"></div>
+        </div>
       </nav>
     );
   }
 
+  // Estado del cliente (Hydrated): Añade la interactividad del botón
   return (
-    <nav className="fixed w-full top-0 z-50 flex justify-between items-center px-8 py-6 bg-cyber-black/90 dark:bg-cyber-black/70 backdrop-blur-md border-b border-[#222]">
-      <div className="text-xl font-black uppercase tracking-tighter text-white">
-        Victor_Molina<span className="text-[#ff4500]">.</span>Dev
+    <nav className={navStyles}>
+      <div className={titleStyles}>
+        Victor_Molina<span className="text-primary">.</span>Dev
       </div>
-
-
-      <button
+      
+      <button 
         onClick={handleToggleTheme}
-        className="border border-cyber-grid-light dark:border-neutral-800 hover:border-primary px-6 py-2 text-xs font-mono text-gray-500 dark:text-neutral-400 hover:text-primary uppercase tracking-widest transition-colors flex items-center gap-2 bg-transparent"
+        className={buttonStyles}
       >
         <span>Mode</span>
-        <div className={`w-2 h-2 ${theme === 'light' ? 'bg-gray-950' : 'bg-primary'}`}></div>
+        <div className={`w-2 h-2 ${theme === 'light' ? 'bg-gray-300' : 'bg-primary'}`}></div>
       </button>
     </nav>
   );
