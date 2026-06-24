@@ -52,7 +52,8 @@ export default function HeroMask() {
   const bgColor: [number, number, number] = isDark ? [0.0, 0.0, 0.0] : [0, 0, 0];
 
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-cyber-black transition-colors duration-700 selection:bg-primary selection:text-white">
+      <section id="hero" className={`relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-cyber-black transition-colors 
+    duration-700 selection:bg-primary selection:text-white ${isDark ? 'shadow-[0_0_25px_2px_var(--color-primary)]' : 'shadow-[0_0_0px_0px]'}`}>
 
       {/* =========================================================================
          [CAPA Z-0] FONDO INTERACTIVO DITHER CON SOPORTE DE TEMA
@@ -87,7 +88,7 @@ export default function HeroMask() {
       <div className="absolute inset-0 pointer-events-none z-40 opacity-[0.04] dark:opacity-15 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
 
       {/* Marco Izquierdo */}
-      <div className="absolute left-0 top-20 bottom-0 w-16 border-r border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
+      <div className="absolute left-0 top-20 bottom-0 w-16 bg-black/40 border-r border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
         <div className="absolute pl-5 md:left-16 flex flex-col">
           <span className="text-primary font-mono text-xs tracking-[0.3em] uppercase font-bold animate-pulse">// SYS.INIT</span>
           <span className="text-secondary dark:text-neutral-500 font-mono text-xs tracking-widest mt-2">DEV_PROTOCOL</span>
@@ -97,7 +98,7 @@ export default function HeroMask() {
       </div>
 
       {/* Marco Derecho */}
-      <div className="absolute right-0 top-20 bottom-0 w-16 border-l border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
+      <div className="absolute right-0 top-20 bottom-0 w-16 bg-black/40 border-l border-cyber-grid-light dark:border-cyber-grid z-40 flex flex-col items-center py-12 gap-8 hidden sm:flex">
         <div className="w-4 h-24 mt-20 opacity-50"><DiagonalLoader /></div>
         <div className="w-4 h-48"><DiagonalLoader reverse /></div>
         <div className="absolute bottom-5 right-18 w-25 text-secondary/70 dark:text-gray-300/70 font-bold text-xs tracking-wider">[REWORK-TEST]</div>

@@ -15,7 +15,7 @@ import About from '../components/About';
 	<main 
 		id="projects-timeline" 
 		class="w-full max-w-[1600px] mx-auto border-x border-cyber-grid-light 
-		dark:border-cyber-grid bg-white dark:bg-cyber-black transition-all duration-1000 opacity-0 pointer-events-none"
+		dark:border-cyber-grid transition-all duration-1000 opacity-0 pointer-events-none"
 	>
 		{projectsData.map((project, index) => (
 			<ProjectCard project={project} index={index} client:visible />
